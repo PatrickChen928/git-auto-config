@@ -27,19 +27,19 @@ function writeFile(proxyConfig: ProxyConfig[]) {
 export function getGitConfig(): ProxyConfig[] {
   if (fs.existsSync(path.resolve(USER_HOME, FILE_NAME)))
     return JSON.parse(fs.readFileSync(path.resolve(USER_HOME, FILE_NAME), 'utf-8'))
-  else
-    return []
+  else return []
 }
 
 export function showProxyConfig(rule?: string) {
   const proxyConfig = getGitConfig()
-  if (!rule) { logger.info('\n' + JSON.stringify(proxyConfig, null, 2)) }
+  if (!rule) {
+    logger.info('\n' + JSON.stringify(proxyConfig, null, 2))
+  }
   else {
     const config = proxyConfig.find(item => item.rule === rule)
     if (config)
       logger.info('\n' + JSON.stringify(config, null, 2))
-    else
-      logger.warn(`no proxy config found for rule: ${rule}`)
+    else logger.warn(`no proxy config found for rule: ${rule}`)
   }
 }
 
@@ -51,7 +51,7 @@ export function parseAuthor(author: string) {
     const [name, email] = author.split('<')
     return {
       name: name.trim(),
-      email: email.replace('>', '').trim(),
+      email: email.replace('>', '').trim()
     }
   }
   catch (e) {
@@ -74,7 +74,7 @@ export function storeProxyConfig(options: ProxyConfig, immediately = false) {
     proxyConfig.push({
       rule: options.rule,
       name: options.name,
-      email: options.email,
+      email: options.email
     })
   }
   writeFile(proxyConfig)
@@ -113,7 +113,7 @@ export function execProxyConfig(proxyConfig?: ProxyConfig[], repository?: string
         else
           logger.warn(' there has not set user.name for this repository, will use the global one.')
         if (email)
-          exec(`git config --local user.name '${email}'`)
+          exec(`git config --local user.email '${email}'`)
         else
           logger.warn(' there has not set user.email for this repository, will use the global one.')
         return
