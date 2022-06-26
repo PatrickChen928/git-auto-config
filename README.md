@@ -19,11 +19,11 @@ Firstly, you need to config your rules by `gitp p -r xxx -a xxx`. Then, when you
 ```shell
 npm install -g git-auto-config
 
-or
+# or
 
 yarn global add git-auto-config
 
-or
+# or
 
 pnpm install -g git-auto-config
 ```
