@@ -27,6 +27,7 @@ or
 
 pnpm install -g git-auto-config
 ```
+
 ### config your git rules
 
 `only config once`
@@ -61,10 +62,11 @@ add git proxy rules
 - `-a, --author <author>`
 
 **e.g.**
+
 ```shell
 gitp p -r github -a "name1 <email1@xx.com>"
 
-# or 
+# or
 
 gitp p -r github -n name1 -e email1@xx.com
 ```
@@ -77,13 +79,13 @@ show your config
 - `-r, --rule <rule>`
 
 **e.g.**
+
 ```shell
 
 # show rule `github` config
 gitp ps -r github
 
 # show all
-
 gitp ps
 ```
 
@@ -95,19 +97,20 @@ delete your config
 - `-a, --all`
 
 **e.g.**
+
 ```shell
 
 # delete rule `github` and `gitlab`
 gitp pd github gitlab
 
 # delete all
-
 gitp pd -a
 ```
 
 ### -v | -h
 
 **e.g.**
+
 ```shell
 gitp -v
 
