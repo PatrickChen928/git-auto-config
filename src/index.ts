@@ -24,6 +24,10 @@ function writeFile(proxyConfig: ProxyConfig[]) {
   fs.writeFileSync(path.resolve(USER_HOME, FILE_NAME), JSON.stringify(proxyConfig))
 }
 
+function getDirName(repository: string) {
+  return repository.split('/').pop().replace('.git', '')
+}
+
 export function getGitConfig(): ProxyConfig[] {
   if (fs.existsSync(path.resolve(USER_HOME, FILE_NAME)))
     return JSON.parse(fs.readFileSync(path.resolve(USER_HOME, FILE_NAME), 'utf-8'))
@@ -97,24 +101,31 @@ export function delGitConfig(rules: string[], all = false) {
 export function execGitCommand(args: string[]) {
   spawn('git', args, { stdio: 'inherit' })
 
-  if (args.length && args[0] === 'clone')
-    execProxyConfig([], args[1])
+  if (args.length && args[0] === 'clone') {
+    // TODO: need to chore
+    const repo = args[1]
+    execProxyConfig([], repo, `cd ${getDirName(repo)} && `)
+  }
 }
 
-export function execProxyConfig(proxyConfig?: ProxyConfig[], repository?: string) {
+export function execProxyConfig(proxyConfig?: ProxyConfig[], repository?: string, precommand = '') {
   proxyConfig = proxyConfig && proxyConfig.length ? proxyConfig : getGitConfig()
   process.nextTick(() => {
     repository = repository || getRepositoryUrl()
     if (proxyConfig && proxyConfig.length > 0) {
       for (const { rule, name, email } of proxyConfig) {
         if (matchRepository(repository, rule)) {
-          if (name) { exec(`git config --local user.name '${name}'`) }
+          if (name) {
+            exec(`${precommand}git config --local user.name '${name}'`)
+          }
           else {
             logger.warn(
               ' there has not set user.name for this repository, will use the global one.'
             )
           }
-          if (email) { exec(`git config --local user.email '${email}'`) }
+          if (email) {
+            exec(`${precommand}git config --local user.email '${email}'`)
+          }
           else {
             logger.warn(
               ' there has not set user.email for this repository, will use the global one.'

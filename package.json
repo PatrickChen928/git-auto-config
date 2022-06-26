@@ -17,7 +17,6 @@
     "git proxy"
   ],
   "scripts": {
-    "dev": "cd example && pnpm run dev",
     "build": "rollup -c",
     "test": "vitest",
     "test:ui": "vitest --ui",
