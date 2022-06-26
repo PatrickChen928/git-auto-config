@@ -2,7 +2,6 @@
 
 Auto config diffient user.name and user.email in different git repos.
 
-
 > ✨✨✨ Don't worry about forgetting to switch git info again!!!.
 
 ## Why?
