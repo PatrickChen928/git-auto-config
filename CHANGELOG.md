@@ -1,3 +1,9 @@
+## [0.0.1-beta.4](https://github.com/ChpShy/git-auto-configy/compare/v0.0.1-beta.3...v0.0.1-beta.4) (2022-06-26)
+
+### Bug Fixes
+
+- dir ([bc8a11d](https://github.com/ChpShy/git-auto-configy/commit/bc8a11da7384253f46fbcfde98f01803842877ca))
+
 ## [0.0.1-beta.3](https://github.com/ChpShy/git-auto-configy/compare/v0.0.1-beta.2...v0.0.1-beta.3) (2022-06-26)
 
 ### Bug Fixes
