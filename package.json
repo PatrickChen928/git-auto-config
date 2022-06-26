@@ -1,6 +1,6 @@
 {
   "name": "git-auto-config",
-  "version": "0.0.1-beta.3",
+  "version": "0.0.1-beta.4",
   "packageManager": "pnpm@7.1.7",
   "description": "Auto config diffient user.name and user.email in different git repos",
   "main": "./dist/index.cjs",
