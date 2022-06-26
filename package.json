@@ -1,0 +1,104 @@
+{
+  "name": "git-auto-config",
+  "version": "0.0.0",
+  "packageManager": "pnpm@7.1.7",
+  "description": "Auto config diffient user.name and user.email in different git repos",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "gitp": "./bin/cli.js"
+  },
+  "keywords": [
+    "git",
+    "git config",
+    "user.name",
+    "user.email",
+    "git proxy"
+  ],
+  "scripts": {
+    "dev": "cd example && pnpm run dev",
+    "build": "rollup -c",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage",
+    "release": "bumpp --commit --push --tag --files CHANGELOG.md && pnpm publish",
+    "typecheck": "tsc --noEmit",
+    "fix": "eslint --fix --ext .js,.ts src tests scripts",
+    "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
+    "prepublishOnly": "pnpm run build"
+  },
+  "files": [
+    "bin",
+    "dist/"
+  ],
+  "author": "cyly 786156072@qq.com",
+  "homepage": "https://github.com/ChpShy/git-auto-configy#readme",
+  "bugs": {
+    "url": "https://github.com/ChpShy/git-auto-configy/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChpShy/git-auto-configy.git"
+  },
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.mjs",
+      "types": "./types/index.d.ts"
+    }
+  },
+  "simple-git-hooks": {
+    "pre-commit": "pnpm exec lint-staged --concurrent false",
+    "commit-msg": "pnpm exec esno scripts/verifyCommit.ts $1"
+  },
+  "lint-staged": {
+    "*": [
+      "prettier --write --ignore-unknown"
+    ],
+    "{src,scripts,types,tests}/**/*.ts": [
+      "eslint --fix --ext .ts"
+    ],
+    "packages/*/{src,types,tests}/**/*.ts": [
+      "eslint --ext .ts"
+    ],
+    "packages/**/*.d.ts": [
+      "eslint --ext .ts"
+    ]
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.20.2",
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-json": "^4.1.0",
+    "@types/node": "^17.0.30",
+    "@vitest/ui": "^0.7.4",
+    "bumpp": "^7.1.1",
+    "c8": "^7.11.0",
+    "conventional-changelog-cli": "^2.2.2",
+    "esbuild": "^0.14.27",
+    "eslint": "^8.13.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "esno": "^0.16.3",
+    "lint-staged": "^12.4.1",
+    "picocolors": "^1.0.0",
+    "prettier": "^2.6.2",
+    "rollup": "^2.70.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-clear": "^2.0.7",
+    "rollup-plugin-dts": "^4.2.0",
+    "rollup-plugin-esbuild": "^4.8.2",
+    "simple-git-hooks": "^2.7.0",
+    "typescript": "^4.1",
+    "vite": "^2.8.6",
+    "vitest": "^0.7.4"
+  },
+  "dependencies": {
+    "cac": "^6.7.12"
+  }
+}

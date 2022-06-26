@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "gitp -h"
+  },
+  "devDependencies": {
+    "git-auto-config": "workspace:*"
+  }
+}
