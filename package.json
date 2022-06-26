@@ -1,6 +1,6 @@
 {
   "name": "git-auto-config",
-  "version": "0.0.1-beta.0",
+  "version": "0.0.1-beta.1",
   "packageManager": "pnpm@7.1.7",
   "description": "Auto config diffient user.name and user.email in different git repos",
   "main": "./dist/index.cjs",
@@ -23,7 +23,7 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "coverage": "vitest run --coverage",
-    "release": "bumpp --commit --push --tag --files CHANGELOG.md && pnpm publish",
+    "release": "bumpp --commit --push --tag --files CHANGELOG.md package.json package-lock.json && pnpm publish",
     "typecheck": "tsc --noEmit",
     "fix": "eslint --fix --ext .js,.ts src tests scripts",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
