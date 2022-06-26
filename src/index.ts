@@ -98,26 +98,31 @@ export function execGitCommand(args: string[]) {
   spawn('git', args, { stdio: 'inherit' })
 
   if (args.length && args[0] === 'clone')
-    execProxyConfig()
+    execProxyConfig([], args[1])
 }
 
 export function execProxyConfig(proxyConfig?: ProxyConfig[], repository?: string) {
   proxyConfig = proxyConfig && proxyConfig.length ? proxyConfig : getGitConfig()
-  repository = repository || getRepositoryUrl()
-
-  if (proxyConfig && proxyConfig.length > 0) {
-    for (const { rule, name, email } of proxyConfig) {
-      if (matchRepository(repository, rule)) {
-        if (name)
-          exec(`git config --local user.name '${name}'`)
-        else
-          logger.warn(' there has not set user.name for this repository, will use the global one.')
-        if (email)
-          exec(`git config --local user.email '${email}'`)
-        else
-          logger.warn(' there has not set user.email for this repository, will use the global one.')
-        return
+  process.nextTick(() => {
+    repository = repository || getRepositoryUrl()
+    if (proxyConfig && proxyConfig.length > 0) {
+      for (const { rule, name, email } of proxyConfig) {
+        if (matchRepository(repository, rule)) {
+          if (name) { exec(`git config --local user.name '${name}'`) }
+          else {
+            logger.warn(
+              ' there has not set user.name for this repository, will use the global one.'
+            )
+          }
+          if (email) { exec(`git config --local user.email '${email}'`) }
+          else {
+            logger.warn(
+              ' there has not set user.email for this repository, will use the global one.'
+            )
+          }
+          return
+        }
       }
     }
-  }
+  })
 }
