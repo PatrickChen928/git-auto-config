@@ -33,13 +33,13 @@
     "dist/"
   ],
   "author": "cyly 786156072@qq.com",
-  "homepage": "https://github.com/ChpShy/git-auto-configy#readme",
+  "homepage": "https://github.com/ChpShy/git-auto-config#readme",
   "bugs": {
-    "url": "https://github.com/ChpShy/git-auto-configy/issues"
+    "url": "https://github.com/ChpShy/git-auto-config/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ChpShy/git-auto-configy.git"
+    "url": "git+https://github.com/ChpShy/git-auto-config.git"
   },
   "license": "MIT",
   "exports": {

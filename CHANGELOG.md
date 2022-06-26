@@ -1,3 +1,5 @@
+## [0.0.1](https://github.com/ChpShy/git-auto-configy/compare/v0.0.1-beta.4...v0.0.1) (2022-06-26)
+
 ## [0.0.1-beta.4](https://github.com/ChpShy/git-auto-configy/compare/v0.0.1-beta.3...v0.0.1-beta.4) (2022-06-26)
 
 ### Bug Fixes
