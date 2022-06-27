@@ -1,3 +1,9 @@
+## [0.0.2-beta.0](https://github.com/ChpShy/git-auto-config/compare/v0.0.1...v0.0.2-beta.0) (2022-06-27)
+
+### Bug Fixes
+
+- url ([3b221fd](https://github.com/ChpShy/git-auto-config/commit/3b221fdc91524a098a1b57cbc1dd0bf8994b4880))
+
 ## [0.0.1](https://github.com/ChpShy/git-auto-configy/compare/v0.0.1-beta.4...v0.0.1) (2022-06-26)
 
 ## [0.0.1-beta.4](https://github.com/ChpShy/git-auto-configy/compare/v0.0.1-beta.3...v0.0.1-beta.4) (2022-06-26)
