@@ -22,7 +22,7 @@
     "test:ui": "vitest --ui",
     "test:run": "vitest run",
     "coverage": "vitest run --coverage",
-    "release": "bumpp --commit --push --tag && pnpm publish",
+    "release": "bumpp && pnpm publish",
     "typecheck": "tsc --noEmit",
     "fix": "eslint --fix --ext .js,.ts src tests scripts",
     "version": "conventional-changelog -p angular -i CHANGELOG.md -s && git add CHANGELOG.md",
