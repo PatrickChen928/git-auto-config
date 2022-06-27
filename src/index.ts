@@ -100,11 +100,18 @@ export function delGitConfig(rules: string[], all = false) {
 
 export function execGitCommand(args: string[]) {
   spawn('git', args, { stdio: 'inherit' })
-
-  if (args.length && args[0] === 'clone') {
-    // TODO: need to chore
-    const repo = args[1]
-    execProxyConfig([], repo, `cd ${getDirName(repo)} && `)
+  if (args.length) {
+    if (args[0] === 'clone') {
+      // git clone xxx
+      // TODO: need to refactor
+      const repo = args[1]
+      execProxyConfig([], repo, `cd ${getDirName(repo)} && `)
+    }
+    else if (args[0] === 'remote') {
+      // git remote add origin xxx
+      if (args[1] === 'add')
+        execProxyConfig([], args[args.length - 1])
+    }
   }
 }
 
