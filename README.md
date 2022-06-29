@@ -50,6 +50,14 @@ gitp clone https://github.com/xxx/xxxx.git
 gitp clone https://gitlab.com/xxx/xxxx.git
 ```
 
+## config old project
+
+```shell
+# Provided that you have already configed your git rules by `gitp p xxx`
+
+gitp s
+```
+
 ## gitp commands
 
 ### proxy | p
@@ -69,6 +77,20 @@ gitp p -r github -a "name1 <email1@xx.com>"
 # or
 
 gitp p -r github -n name1 -e email1@xx.com
+```
+
+### set | s
+
+manual set current project(Make sure you had set the rule by `gitp p xxx`)
+
+**e.g.**
+
+```shell
+gitp s
+
+# or
+
+gitp set
 ```
 
 ### proxy-show | ps

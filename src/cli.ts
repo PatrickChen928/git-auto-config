@@ -1,6 +1,13 @@
 import { cac } from 'cac'
 import { version } from '../package.json'
-import { execGitCommand, storeProxyConfig, parseAuthor, showProxyConfig, delGitConfig } from '.'
+import {
+  execGitCommand,
+  storeProxyConfig,
+  parseAuthor,
+  showProxyConfig,
+  delGitConfig,
+  execProxyConfig
+} from '.'
 
 const cli = cac('gitp')
 
@@ -16,7 +23,7 @@ cli
     const config = {
       rule: args.r,
       name: args.n,
-      email: args.e,
+      email: args.e
     }
     if (args.author) {
       const info = parseAuthor(args.author)
@@ -26,6 +33,14 @@ cli
       }
     }
     storeProxyConfig(config)
+  })
+
+// set current project by proxy config
+cli
+  .command('set', 'set current project by proxy config')
+  .alias('s')
+  .action(() => {
+    execProxyConfig()
   })
 
 // show proxy config
