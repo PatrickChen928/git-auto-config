@@ -1,10 +1,10 @@
-## [0.0.3](https://github.com/ChpShy/git-auto-config/compare/v0.0.3-beta.1...v0.0.3) (2022-06-27)
+## [0.0.4](https://github.com/ChpShy/git-auto-config/compare/v0.0.4-beta.1...v0.0.4) (2022-06-27)
 
 ### Features
 
 - support git remote add ([0295aa4](https://github.com/ChpShy/git-auto-config/commit/0295aa4078a787173b94d098e08fa31e41689e9c))
 
-## [0.0.3-beta.1](https://github.com/ChpShy/git-auto-config/compare/v0.0.1...v0.0.3-beta.1) (2022-06-27)
+## [0.0.4-beta.1](https://github.com/ChpShy/git-auto-config/compare/v0.0.1...v0.0.4-beta.1) (2022-06-27)
 
 ### Bug Fixes
 
