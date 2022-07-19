@@ -120,26 +120,37 @@ export function execProxyConfig(proxyConfig?: ProxyConfig[], repository?: string
   process.nextTick(() => {
     repository = repository || getRepositoryUrl()
     if (proxyConfig && proxyConfig.length > 0) {
-      for (const { rule, name, email } of proxyConfig) {
-        if (matchRepository(repository, rule)) {
-          if (name) {
-            exec(`${precommand}git config --local user.name '${name}'`)
+      try {
+        for (const { rule, name, email } of proxyConfig) {
+          let logMsg = ''
+          if (matchRepository(repository, rule)) {
+            if (name) {
+              exec(`${precommand}git config --local user.name '${name}'`)
+              logMsg += `auto set user.name to ${name};\n`
+            }
+            else {
+              logger.warn(
+                ' there has not set user.name for this repository, will use the global one.'
+              )
+            }
+            if (email) {
+              exec(`${precommand}git config --local user.email '${email}'`)
+              logMsg += `auto set user.email to ${email};\n`
+            }
+            else {
+              logger.warn(
+                ' there has not set user.email for this repository, will use the global one.'
+              )
+            }
+            if (logMsg)
+              logger.info(logMsg)
+
+            return
           }
-          else {
-            logger.warn(
-              ' there has not set user.name for this repository, will use the global one.'
-            )
-          }
-          if (email) {
-            exec(`${precommand}git config --local user.email '${email}'`)
-          }
-          else {
-            logger.warn(
-              ' there has not set user.email for this repository, will use the global one.'
-            )
-          }
-          return
         }
+      }
+      catch (e) {
+        logger.error(e.message)
       }
     }
   })
