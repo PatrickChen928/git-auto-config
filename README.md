@@ -28,6 +28,16 @@ yarn global add git-auto-config
 pnpm install -g git-auto-config
 ```
 
+### Alias(！important)
+
+```shell
+# mac
+alias git="gitp"
+
+# window
+to google~
+```
+
 ### config your git rules
 
 `only config once`
