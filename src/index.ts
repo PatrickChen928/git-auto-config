@@ -126,7 +126,7 @@ export function execProxyConfig(proxyConfig?: ProxyConfig[], repository?: string
           if (matchRepository(repository, rule)) {
             if (name) {
               exec(`${precommand}git config --local user.name '${name}'`)
-              logMsg += `auto set user.name to ${name};\n`
+              logMsg += `\n auto set user.name to ${name};`
             }
             else {
               logger.warn(
@@ -135,7 +135,7 @@ export function execProxyConfig(proxyConfig?: ProxyConfig[], repository?: string
             }
             if (email) {
               exec(`${precommand}git config --local user.email '${email}'`)
-              logMsg += `auto set user.email to ${email};\n`
+              logMsg += `\n auto set user.email to ${email};`
             }
             else {
               logger.warn(
@@ -143,7 +143,7 @@ export function execProxyConfig(proxyConfig?: ProxyConfig[], repository?: string
               )
             }
             if (logMsg)
-              logger.info(logMsg)
+              logger.info('---------------------------' + logMsg)
 
             return
           }
