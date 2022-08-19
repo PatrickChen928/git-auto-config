@@ -32,7 +32,14 @@ pnpm install -g git-auto-config
 
 ```shell
 # mac
+
 alias git="gitp"
+
+# or
+
+vim ~/.zshrc
+alias git="gitp"
+
 
 # window
 to google~
